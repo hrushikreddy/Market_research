@@ -1,0 +1,30 @@
+project:
+  seed: 42
+  output_dir: reports/generated
+  data_dir: data/processed
+analysis:
+  max_lag: 5
+  nw_lags: 5
+  fdr_alpha: 0.05
+  bootstrap_samples: 1000
+  bootstrap_block: 10
+  transaction_cost_bps: 5.0
+validation:
+  initial_train_size: 756
+  test_size: 21
+  step_size: 21
+  embargo: 1
+features:
+  return_lags: [1, 2, 3, 5, 10]
+  sentiment_lags: [1, 2, 3, 5]
+  volatility_windows: [5, 21]
+nlp:
+  model_name: ProsusAI/finbert
+  batch_size: 16
+  max_length: 256
+  fallback_lexicon: true
+data:
+  market_file: data/processed/market.csv
+  text_file: data/processed/text.csv
+  event_file: data/events.csv
+

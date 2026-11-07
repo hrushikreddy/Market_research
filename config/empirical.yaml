@@ -1,0 +1,30 @@
+project:
+  seed: 2026
+  output_dir: reports/empirical
+  data_dir: data/processed
+analysis:
+  max_lag: 10
+  nw_lags: 10
+  fdr_alpha: 0.05
+  bootstrap_samples: 1000
+  bootstrap_block: 10
+  transaction_cost_bps: 5.0
+validation:
+  initial_train_size: 500
+  test_size: 63
+  step_size: 63
+  embargo: 1
+features:
+  return_lags: [1, 2, 3, 5, 10, 21]
+  sentiment_lags: [1, 2, 3, 5, 10]
+  volatility_windows: [5, 21, 63]
+nlp:
+  model_name: ProsusAI/finbert
+  batch_size: 16
+  max_length: 256
+  fallback_lexicon: true
+data:
+  market_file: data/processed/market_empirical.csv
+  text_file: data/processed/news_proxy.csv
+  event_file: data/events.csv
+
