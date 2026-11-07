@@ -1,0 +1,6 @@
+event_id,event_name,event_class,event_time_utc,market
+covid_who_2020,WHO pandemic declaration,Pandemic,2020-03-11T16:30:00Z,BOTH
+uk_brexit_2020,UK leaves EU single market,Brexit,2020-12-31T23:00:00Z,FTSE100
+ukraine_2022,Russia invasion of Ukraine,Geopolitical,2022-02-24T03:00:00Z,BOTH
+svb_2023,Silicon Valley Bank closure,Banking stress,2023-03-10T16:00:00Z,SP500
+
