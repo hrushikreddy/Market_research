@@ -1,0 +1,10 @@
+{
+  "observations": 3663,
+  "markets": [
+    "FTSE100",
+    "SP500"
+  ],
+  "start": "2020-01-01",
+  "end": "2025-12-31",
+  "disclaimer": "News uncertainty is an observable proxy, not identical to direct FinBERT polarity or StockTwits sentiment."
+}
