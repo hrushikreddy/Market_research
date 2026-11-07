@@ -1,6 +1,6 @@
 # Market Information Delay Research
 
-This repository implements the empirical framework for the dissertation **Measuring Information Delays in Developed Equity Markets Through Financial News and Investor Sentiment Analytics**. It is original research code inspired by the reproducibility, factor-research and validation habits demonstrated in Udacity's AI for Trading projects. It does not copy Udacity project solutions.
+This repository implements the empirical framework for the dissertation **Measuring Information Delays in Developed Equity Markets Through Financial News and Investor Sentiment Analytics**.
 
 ## Research questions implemented
 
