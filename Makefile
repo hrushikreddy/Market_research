@@ -1,12 +1,14 @@
+
 PYTHON ?= python3
 VENV ?= .venv
 BIN := $(VENV)/bin
 
-.PHONY: help install install-nlp test lint format typecheck quality demo data empirical figures run clean package
+.PHONY: help install install-nlp build test lint format typecheck quality demo data empirical figures run clean package
 
 help:
 	@echo "install      Create environment and install core dependencies"
 	@echo "install-nlp  Install optional FinBERT dependencies"
+	@echo "build        Compile and validate Python source code"
 	@echo "test         Run unit and integration tests"
 	@echo "quality      Run lint, type checks and tests"
 	@echo "demo         Run the deterministic synthetic dissertation pipeline"
@@ -23,6 +25,10 @@ install:
 
 install-nlp: install
 	$(BIN)/python -m pip install -e ".[nlp]"
+
+build:
+	$(BIN)/python -m compileall -q src/
+	@echo "Python source compilation completed successfully"
 
 test:
 	$(BIN)/pytest -q --cov=market_delay --cov-report=term-missing --cov-fail-under=85
@@ -58,3 +64,4 @@ package:
 
 clean:
 	$(PYTHON) -c "from pathlib import Path; import shutil; [shutil.rmtree(p, ignore_errors=True) for p in map(Path, ['build','dist','.pytest_cache','.mypy_cache','.ruff_cache','htmlcov'])]"
+
