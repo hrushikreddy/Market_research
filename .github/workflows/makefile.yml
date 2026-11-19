@@ -1,4 +1,5 @@
-name: Python Makefile Pipeline
+
+name: Market Research Dissertation Pipeline
 
 on:
   push:
@@ -32,5 +33,32 @@ jobs:
       - name: Run tests
         run: make test
 
-      - name: Execute pipeline
-        run: make run
+      - name: Prepare empirical data
+        run: |
+          if [ -s data/processed/market_empirical.csv ] && \
+             [ -s data/processed/news_proxy.csv ]; then
+            echo "Using preserved empirical datasets"
+          else
+            make data
+          fi
+
+      - name: Verify empirical datasets
+        run: |
+          ls -lh data/processed/
+          test -s data/processed/market_empirical.csv
+          test -s data/processed/news_proxy.csv
+
+      - name: Run empirical analysis
+        run: make empirical
+
+      - name: Generate dissertation figures
+        run: make figures
+
+      - name: Upload dissertation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dissertation-results
+          path: |
+            reports/empirical/
+            data/processed/
+            htmlcov/
