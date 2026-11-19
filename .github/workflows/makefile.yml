@@ -1,0 +1,36 @@
+name: Python Makefile Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Make
+        run: sudo apt-get install -y make
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Build project
+        run: make build
+
+      - name: Run tests
+        run: make test
+
+      - name: Execute pipeline
+        run: make run
